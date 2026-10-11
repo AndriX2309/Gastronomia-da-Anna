@@ -604,6 +604,17 @@
             color: var(--primary);
         }
 
+        .btn-phone {
+            background-color: var(--primary);
+            color: var(--white);
+            border: 2px solid var(--primary);
+        }
+
+        .btn-phone:hover {
+            background-color: var(--primary-light);
+            border-color: var(--primary-light);
+        }
+
         .btn-whatsapp {
             background-color: #25d366;
             color: var(--white);
@@ -1193,10 +1204,6 @@
             color: var(--white);
         }
 
-        .floating-whatsapp-badge .floating-whatsapp-text {
-            display: none;
-        }
-
         /* Footer Bordeaux */
         footer {
             background-color: var(--primary-dark);
@@ -1488,11 +1495,16 @@
                     <p>+39 348 9583263 | +39 011 950 7974</p>
                 </div>
             </div>
-            <div style="margin-top: 25px; display: flex; gap: 10px; flex-wrap: wrap;">
-                <a href="https://wa.me/393489583263" target="_blank" class="btn btn-whatsapp" style="flex: 1; justify-content: center;">
-                    <i class="fa-brands fa-whatsapp"></i> Scrivici su WhatsApp
+            
+            <!-- PULSANTI CONTATTI E MAPPA -->
+            <div style="margin-top: 25px; display: flex; gap: 12px; flex-wrap: wrap;">
+                <a href="tel:+390119507974" class="btn btn-phone" style="flex: 1; justify-content: center; min-width: 200px;">
+                    <i class="fa-solid fa-phone"></i> +39 011 950 7974
                 </a>
-                <a href="https://www.google.com/maps/place/Gastronomia+da+Anna+-+Frutta+e+Verdura/@45.0374003,7.678686,17z/data=!3m1!4b1!4m6!3m5!1s0x478812ac34a15c49:0x14e16896759e6e75!8m2!3d45.0374003!4d7.6812609!16s%2Fg%2F1tjgngzl?hl=it" target="_blank" class="btn btn-crema" style="flex: 1; justify-content: center;">
+                <a href="https://wa.me/393489583263" target="_blank" class="btn btn-whatsapp" style="flex: 1; justify-content: center; min-width: 200px;">
+                    <i class="fa-brands fa-whatsapp"></i> WhatsApp
+                </a>
+                <a href="https://www.google.com/maps/place/Gastronomia+da+Anna+-+Frutta+e+Verdura/@45.0374003,7.678686,17z/data=!3m1!4b1!4m6!3m5!1s0x478812ac34a15c49:0x14e16896759e6e75!8m2!3d45.0374003!4d7.6812609!16s%2Fg%2F1tjgngzl?hl=it" target="_blank" class="btn btn-crema" style="flex: 1; justify-content: center; min-width: 200px;">
                     <i class="fa-solid fa-directions"></i> Indicazioni Stradali
                 </a>
             </div>
