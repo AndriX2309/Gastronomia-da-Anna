@@ -8,8 +8,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <!-- FontAwesome per le icone -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Chart.js per il grafico delle statistiche -->
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     
     <style>
         :root {
@@ -1171,171 +1169,32 @@
             font-weight: 500;
         }
 
-        /* WIDGET FLOATING BADGE WHATSAPP */
+        /* WIDGET FLOATING BADGE WHATSAPP (CIRCOLARE SU TELEFONO E TABLET) */
         .floating-whatsapp-badge {
             display: none;
             position: fixed;
             bottom: 20px;
             right: 20px;
-            background: #ffffff;
-            border-radius: 50px;
-            padding: 8px 18px 8px 12px;
+            background-color: #25d366;
+            color: var(--white);
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
             align-items: center;
-            gap: 10px;
-            box-shadow: 0 8px 25px rgba(37, 211, 102, 0.3);
+            justify-content: center;
+            box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4);
             z-index: 990;
-            border: 1.5px solid #25d366;
             transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             text-decoration: none;
-            color: var(--text-main);
         }
 
         .floating-whatsapp-badge i.fa-whatsapp {
-            font-size: 1.4rem;
-            color: #ffffff;
-            background: #25d366;
-            width: 34px;
-            height: 34px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 3px 8px rgba(37, 211, 102, 0.4);
-        }
-
-        .floating-whatsapp-text {
-            display: flex;
-            flex-direction: column;
-            line-height: 1.1;
-        }
-
-        .floating-whatsapp-title {
-            font-weight: 800;
-            font-size: 0.88rem;
-            color: #128c7e;
-        }
-
-        .floating-whatsapp-label {
-            font-size: 0.7rem;
-            color: var(--text-muted);
-            font-weight: 600;
-        }
-
-        /* --- MODALE SCHERMO INTERO ANALYTICS RISERVATO --- */
-        #analytics-modal {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            background-color: var(--bg-light);
-            z-index: 100000;
-            display: none;
-            overflow-y: auto;
-            padding: 30px 20px;
-        }
-
-        #analytics-modal.active {
-            display: block;
-        }
-
-        .analytics-container {
-            max-width: 1100px;
-            margin: 0 auto;
-        }
-
-        .analytics-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 30px;
-            border-bottom: 2px solid var(--accent);
-            padding-bottom: 15px;
-        }
-
-        .analytics-header h2 {
-            color: var(--primary);
             font-size: 2rem;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .btn-close-analytics {
-            background-color: var(--primary);
             color: var(--white);
-            border: none;
-            padding: 10px 22px;
-            border-radius: 30px;
-            font-weight: 700;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
         }
 
-        .btn-close-analytics:hover {
-            background-color: var(--primary-light);
-            transform: translateY(-2px);
-        }
-
-        .analytics-cards {
-            display: flex;
-            justify-content: center;
-            margin-bottom: 35px;
-        }
-
-        .stat-card {
-            background: var(--white);
-            border-radius: 15px;
-            padding: 20px 40px;
-            box-shadow: 0 8px 20px rgba(92, 29, 36, 0.06);
-            border: 1px solid rgba(92, 29, 36, 0.1);
-            display: flex;
-            align-items: center;
-            gap: 18px;
-        }
-
-        .stat-card i {
-            font-size: 2.2rem;
-            color: var(--primary);
-            background: rgba(92, 29, 36, 0.08);
-            width: 55px;
-            height: 55px;
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .stat-card-info h5 {
-            font-size: 0.85rem;
-            color: var(--text-muted);
-            font-weight: 600;
-            text-transform: uppercase;
-        }
-
-        .stat-card-info p {
-            font-size: 1.8rem;
-            font-weight: 800;
-            color: var(--primary-dark);
-            line-height: 1.1;
-        }
-
-        .chart-box {
-            background: var(--white);
-            border-radius: 20px;
-            padding: 30px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.06);
-            border: 1px solid rgba(92, 29, 36, 0.1);
-            margin-bottom: 30px;
-        }
-
-        .chart-box h3 {
-            color: var(--primary);
-            margin-bottom: 20px;
-            font-size: 1.3rem;
+        .floating-whatsapp-badge .floating-whatsapp-text {
+            display: none;
         }
 
         /* Footer Bordeaux */
@@ -1386,20 +1245,6 @@
             margin-top: 20px;
             font-size: 0.85rem;
             color: rgba(255,255,255,0.6);
-        }
-
-        .secret-analytics-link {
-            display: inline-block;
-            margin-top: 15px;
-            font-size: 0.75rem;
-            color: rgba(255, 255, 255, 0.3);
-            cursor: pointer;
-            transition: color 0.3s ease;
-            text-decoration: none;
-        }
-
-        .secret-analytics-link:hover {
-            color: var(--accent);
         }
 
         @media (max-width: 992px) {
@@ -1484,7 +1329,7 @@
             .hours-table td { font-size: 0.85rem; }
             .logo-bubble { top: 58px; left: 10px; font-size: 0.7rem; }
             .floating-google-badge { bottom: 15px; left: 15px; padding: 6px 14px 6px 10px; }
-            .floating-whatsapp-badge { bottom: 15px; right: 15px; padding: 6px 14px 6px 10px; }
+            .floating-whatsapp-badge { bottom: 15px; right: 15px; }
             .cheers-message { font-size: 1.25rem; }
         }
     </style>
@@ -1530,6 +1375,7 @@
 
             <nav>
                 <ul id="nav-menu">
+                    <li><a href="prodotti.html" style="color: var(--accent); font-weight: 700;"><i class="fa-solid fa-utensils"></i> I Nostri Prodotti</a></li>
                     <li><a href="#offerta">Servizi</a></li>
                     <li><a href="#orari">Orari</a></li>
                     <li><a href="#dove-trovarci">Dove Siamo</a></li>
@@ -1562,6 +1408,9 @@
         </div>
         <p>Cucina casalinga con piatti preparati freschi ogni giorno, pasta fresca fatta in casa, laboratorio a vista e prodotti di prima scelta nel cuore di Torino.</p>
         <div class="hero-btns">
+            <a href="prodotti.html" class="btn btn-crema" style="background-color: var(--accent); color: var(--primary-dark); border-color: var(--accent);">
+                <i class="fa-solid fa-utensils"></i> Scopri I Nostri Prodotti
+            </a>
             <a href="#dove-trovarci" class="btn btn-crema">
                 <i class="fa-solid fa-map-location-dot"></i> Dove Siamo
             </a>
@@ -1898,7 +1747,7 @@
                         <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
                         <span class="review-time">Di recente</span>
                     </div>
-                    <p class="review-text">"Come когда vai a pranzo a casa della mamma e mangeresti tutto quello che ti offre."</p>
+                    <p class="review-text">"Come quando vai a pranzo a casa della mamma e mangeresti tutto quello che ti offre."</p>
                 </div>
             </div>
         </div>
@@ -1913,13 +1762,9 @@
         </div>
     </a>
 
-    <!-- WIDGET FLOATING BADGE WHATSAPP -->
+    <!-- WIDGET FLOATING BADGE WHATSAPP (CERCHIO VERDE) -->
     <a href="https://wa.me/393489583263" target="_blank" class="floating-whatsapp-badge" title="Scrivici su WhatsApp">
         <i class="fa-brands fa-whatsapp"></i>
-        <div class="floating-whatsapp-text">
-            <span class="floating-whatsapp-title">Ordina Ora</span>
-            <span class="floating-whatsapp-label">Chatta con noi</span>
-        </div>
     </a>
 
     <!-- Footer Bordeaux -->
@@ -1938,39 +1783,7 @@
             </div>
         </div>
         <p class="copyright">&copy; 2026 Gastronomia da Anna. Tutti i diritti riservati.</p>
-        
-        <div>
-            <a onclick="openAnalyticsModal()" class="secret-analytics-link">⚙ Area Riservata Statistiche</a>
-        </div>
     </footer>
-
-    <!-- MODALE RISERVATO STATISTICHE & GRAFICO ANALYTICS -->
-    <div id="analytics-modal">
-        <div class="analytics-container">
-            <div class="analytics-header">
-                <h2><i class="fa-solid fa-chart-line"></i> Dashboard Statistiche Visite</h2>
-                <button class="btn-close-analytics" onclick="closeAnalyticsModal()">
-                    <i class="fa-solid fa-xmark"></i> Chiudi
-                </button>
-            </div>
-
-            <div class="analytics-cards">
-                <div class="stat-card">
-                    <i class="fa-solid fa-users"></i>
-                    <div class="stat-card-info">
-                        <h5>Visite Totali</h5>
-                        <p id="stat-total-visits">0</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- GRAFICO DELLE VISITE SETTIMANALI -->
-            <div class="chart-box">
-                <h3><i class="fa-solid fa-chart-area"></i> Andamento Visite Settimanali</h3>
-                <canvas id="visitsChart" height="100"></canvas>
-            </div>
-        </div>
-    </div>
 
     <!-- JavaScript -->
     <script>
@@ -1986,40 +1799,7 @@
                 window.scrollTo(0, 0);
             }, 10);
             checkBusinessStatus();
-            
-            // REGISTRAZIONE VISITA REALE
-            trackVisit();
         });
-
-        // FUNZIONE PER OTTENERE L'INDICE DEL GIORNO (0=Lunedì, ..., 6=Domenica)
-        function getAdjustedDayIndex() {
-            let day = new Date().getDay(); // 0 è Domenica, 1 è Lunedì, ecc.
-            return day === 0 ? 6 : day - 1; 
-        }
-
-        // SISTEMA DI STATISTICHE REALI PARTENDO DA 0 CON LOCALSTORAGE
-        function trackVisit() {
-            // 1. Incremento Visite Totali (+1)
-            let totalVisits = parseInt(localStorage.getItem('anna_total_visits') || '0') + 1;
-            localStorage.setItem('anna_total_visits', totalVisits);
-
-            // 2. Tracciamento Visite Settimanali Reali nei giorni corretti
-            let weeklyData = JSON.parse(localStorage.getItem('anna_weekly_visits') || '[0,0,0,0,0,0,0]');
-            let lastTrackedWeek = localStorage.getItem('anna_last_tracked_week');
-            
-            let now = new Date();
-            let startOfYear = new Date(now.getFullYear(), 0, 1);
-            let currentWeekNumber = Math.ceil((((now - startOfYear) / 86400000) + startOfYear.getDay() + 1) / 7);
-
-            if (lastTrackedWeek && parseInt(lastTrackedWeek) !== currentWeekNumber) {
-                weeklyData = [0, 0, 0, 0, 0, 0, 0];
-            }
-            localStorage.setItem('anna_last_tracked_week', currentWeekNumber);
-
-            let todayIndex = getAdjustedDayIndex();
-            weeklyData[todayIndex] = (weeklyData[todayIndex] || 0) + 1;
-            localStorage.setItem('anna_weekly_visits', JSON.stringify(weeklyData));
-        }
 
         // ANIMAZIONE BRINDISI
         const logoBtn = document.getElementById('logo-btn');
@@ -2034,58 +1814,6 @@
                 cheersOverlay.classList.remove('active');
             }, 3800);
         });
-
-        // APERTURA DASHBOARD E AGGIORNAMENTO GRAFICO
-        let myVisitsChart = null;
-
-        function openAnalyticsModal() {
-            const modal = document.getElementById('analytics-modal');
-            modal.classList.add('active');
-            document.body.style.overflow = 'hidden';
-
-            let totalVisits = parseInt(localStorage.getItem('anna_total_visits') || '0');
-            let weeklyData = JSON.parse(localStorage.getItem('anna_weekly_visits') || '[0,0,0,0,0,0,0]');
-
-            document.getElementById('stat-total-visits').textContent = totalVisits.toLocaleString();
-
-            if (!myVisitsChart) {
-                const ctx1 = document.getElementById('visitsChart').getContext('2d');
-                myVisitsChart = new Chart(ctx1, {
-                    type: 'line',
-                    data: {
-                        labels: ['Lunedì', 'Martedì', 'Mercoledì', 'Giovedì', 'Venerdì', 'Sabato', 'Domenica'],
-                        datasets: [{
-                            label: 'Visite Registrate',
-                            data: weeklyData,
-                            borderColor: '#5c1d24',
-                            backgroundColor: 'rgba(92, 29, 36, 0.15)',
-                            fill: true,
-                            tension: 0.3,
-                            borderWidth: 3
-                        }]
-                    },
-                    options: {
-                        responsive: true,
-                        scales: {
-                            y: {
-                                beginAtZero: true,
-                                ticks: { stepSize: 1 }
-                            }
-                        },
-                        plugins: { legend: { display: true } }
-                    }
-                });
-            } else {
-                myVisitsChart.data.datasets[0].data = weeklyData;
-                myVisitsChart.update();
-            }
-        }
-
-        function closeAnalyticsModal() {
-            const modal = document.getElementById('analytics-modal');
-            modal.classList.remove('active');
-            document.body.style.overflow = '';
-        }
 
         // CALCOLO AUTOMATICO STATO IN TEMPO REALE (APERTO / CHIUSO)
         function checkBusinessStatus() {
