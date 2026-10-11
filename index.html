@@ -490,7 +490,7 @@
             50% { opacity: 0.4; transform: scale(0.85); }
         }
 
-        /* --- HERO BANNER --- */
+        /* --- HERO BANNER CON PARALLASSE SOFT --- */
         .hero {
             padding: 160px 20px 80px;
             background-color: #000;
@@ -498,6 +498,7 @@
             background-position: center center;
             background-size: cover;
             background-repeat: no-repeat;
+            background-attachment: fixed; /* Effetto Parallasse Soft */
             color: var(--white);
             text-align: center;
             min-height: 85vh;
@@ -576,7 +577,9 @@
             align-items: center;
         }
 
+        /* EFFETTO SHINE SUI PULSANTI */
         .btn {
+            position: relative;
             padding: 12px 28px;
             border-radius: 50px;
             font-weight: 600;
@@ -586,11 +589,28 @@
             align-items: center;
             gap: 10px;
             font-size: 0.95rem;
+            overflow: hidden;
+        }
+
+        .btn::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -60%;
+            width: 40%;
+            height: 200%;
+            background: rgba(255, 255, 255, 0.3);
+            transform: rotate(30deg);
+            transition: all 0.6s ease;
+        }
+
+        .btn:hover::after {
+            left: 130%;
         }
 
         .btn:hover {
             transform: translateY(-4px) scale(1.03);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+            box-shadow: 0 8px 25px rgba(212, 175, 55, 0.25);
         }
 
         .btn-crema {
@@ -711,7 +731,7 @@
         }
 
         .service-card:hover {
-            transform: translateY(-10px) rotate(0.5deg);
+            transform: translateY(-10px) scale(1.02);
             box-shadow: 0 20px 40px rgba(92, 29, 36, 0.15);
         }
 
@@ -1180,7 +1200,7 @@
             font-weight: 500;
         }
 
-        /* WIDGET FLOATING BADGE WHATSAPP (CIRCOLARE SU TELEFONO E TABLET) */
+        /* WIDGET FLOATING BADGE WHATSAPP CON EFFETTO ONDA (PULSE) SU MOBILE */
         .floating-whatsapp-badge {
             display: none;
             position: fixed;
@@ -1197,11 +1217,51 @@
             z-index: 990;
             transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             text-decoration: none;
+            animation: pulseWave 2s infinite;
+        }
+
+        @keyframes pulseWave {
+            0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.6); }
+            70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
         }
 
         .floating-whatsapp-badge i.fa-whatsapp {
             font-size: 2rem;
             color: var(--white);
+        }
+
+        /* PULSANTE BACK TO TOP */
+        #back-to-top {
+            position: fixed;
+            bottom: 85px;
+            right: 22px;
+            background-color: var(--primary-dark);
+            color: var(--accent);
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 6px 18px rgba(0,0,0,0.25);
+            border: 1px solid var(--accent);
+            z-index: 989;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.4s ease;
+            cursor: pointer;
+        }
+
+        #back-to-top.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        #back-to-top:hover {
+            transform: translateY(-3px) scale(1.1);
+            background-color: var(--primary);
+            color: #ffffff;
         }
 
         /* Footer Bordeaux */
@@ -1324,7 +1384,7 @@
                 100% { transform: translate(calc(-50vw + 60px), calc(-50vh + 35px)) scale(0.2); opacity: 0; }
             }
 
-            .hero { padding: 140px 15px 60px; min-height: 75vh; }
+            .hero { padding: 140px 15px 60px; min-height: 75vh; background-attachment: scroll; }
             .hero h2 { font-size: 2.1rem; }
             .hero-subtitle { font-size: 1.3rem; margin-bottom: 20px; }
             .hero p { font-size: 1rem; }
@@ -1337,6 +1397,7 @@
             .logo-bubble { top: 58px; left: 10px; font-size: 0.7rem; }
             .floating-google-badge { bottom: 15px; left: 15px; padding: 6px 14px 6px 10px; }
             .floating-whatsapp-badge { bottom: 15px; right: 15px; }
+            #back-to-top { bottom: 80px; right: 20px; }
             .cheers-message { font-size: 1.25rem; }
         }
     </style>
@@ -1567,7 +1628,7 @@
 
         <div class="reviews-summary reveal reveal-delay-1">
             <div class="rating-box">
-                <div class="rating-num">4.8</div>
+                <div class="rating-num" id="count-rating">4.8</div>
                 <div class="rating-stars">
                     <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i>
                 </div>
@@ -1779,6 +1840,11 @@
         <i class="fa-brands fa-whatsapp"></i>
     </a>
 
+    <!-- PULSANTE BACK TO TOP -->
+    <div id="back-to-top" title="Torna su">
+        <i class="fa-solid fa-arrow-up"></i>
+    </div>
+
     <!-- Footer Bordeaux -->
     <footer>
         <div class="footer-content">
@@ -1907,6 +1973,20 @@
                 icon.classList.add('fa-bars');
                 document.body.style.overflow = '';
             });
+        });
+
+        // GESTIONE BACK TO TOP & OBSERVATION
+        const backToTopBtn = document.getElementById('back-to-top');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 400) {
+                backToTopBtn.classList.add('show');
+            } else {
+                backToTopBtn.classList.remove('show');
+            }
+        });
+
+        backToTopBtn.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         });
 
         const revealObserver = new IntersectionObserver((entries) => {
